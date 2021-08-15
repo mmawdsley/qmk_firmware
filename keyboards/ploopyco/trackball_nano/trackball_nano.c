@@ -46,6 +46,10 @@
 #    define PLOOPY_DPI_DEFAULT 1
 #endif
 
+#ifndef NUM_SCROLL_POLL
+#    define NUM_SCROLL_POLL 10
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { };
 
 // Transformation constants for delta-X and delta-Y
@@ -75,15 +79,20 @@ uint16_t lastMidClick = 0;  // Stops scrollwheel from being read if it was press
 uint8_t OptLowPin = OPT_ENC1;
 bool debug_encoder = false;
 
+uint8_t scroll_poll_count = 0;
+
 __attribute__((weak)) void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y) {
     if (DoScroll) {
-        // Scroll is very sensitive if you use the default values.
-        // We can't divide it by anything to reduce the sensitivity, cause that would zero out small input values.
-        // Instead we simply want either a 0, 1, or -1 depending on the input value's sign.
-        x = (x > 0 ? 1 : (x < 0 ? -1 : 0));
-        y = PloopyNumlockScrollVDir * (y > 0 ? 1 : (y < 0 ? -1 : 0));
-        mouse_report->v = x;
-        mouse_report->v = y;
+        if (++scroll_poll_count >= NUM_SCROLL_POLL) {
+            scroll_poll_count = 0;
+            // Scroll is very sensitive if you use the default values.
+            // We can't divide it by anything to reduce the sensitivity, cause that would zero out small input values.
+            // Instead we simply want either a 0, 1, or -1 depending on the input value's sign.
+            x = (x > 0 ? 1 : (x < 0 ? -1 : 0));
+            y = PloopyNumlockScrollVDir * (y > 0 ? 1 : (y < 0 ? -1 : 0));
+            mouse_report->v = x;
+            mouse_report->v = y;
+        }
         return;
     }
 

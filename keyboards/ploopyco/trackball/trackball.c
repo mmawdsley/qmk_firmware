@@ -45,6 +45,9 @@
 #ifndef PLOOPY_DRAGSCROLL_MULTIPLIER
 #    define PLOOPY_DRAGSCROLL_MULTIPLIER 0.75 // Variable-DPI Drag Scroll
 #endif
+#ifndef NUM_SCROLL_POLL
+#    define NUM_SCROLL_POLL 10
+#endif
 
 keyboard_config_t keyboard_config;
 uint16_t          dpi_array[] = PLOOPY_DPI_OPTIONS;
@@ -55,6 +58,11 @@ uint16_t          dpi_array[] = PLOOPY_DPI_OPTIONS;
 // Compile time accel selection
 // Valid options are ACC_NONE, ACC_LINEAR, ACC_CUSTOM, ACC_QUADRATIC
 
+bool PloopyAcceleration = false;
+bool PloopyNumlockScroll = false;
+int16_t PloopyNumlockScrollVDir = 1;
+bool DoScroll = false;
+
 // Trackball State
 bool     is_scroll_clicked = false;
 bool     BurstState        = false;  // init burst state for Trackball module
@@ -64,6 +72,7 @@ uint16_t lastMidClick      = 0;      // Stops scrollwheel from being read if it 
 uint8_t  OptLowPin         = OPT_ENC1;
 bool     debug_encoder     = false;
 bool     is_drag_scroll    = false;
+uint8_t  scroll_poll_count = 0;
 
 __attribute__((weak)) void process_wheel_user(report_mouse_t* mouse_report, int16_t h, int16_t v) {
     mouse_report->h = h;
@@ -103,12 +112,39 @@ __attribute__((weak)) void process_wheel(report_mouse_t* mouse_report) {
 }
 
 __attribute__((weak)) void process_mouse_user(report_mouse_t* mouse_report, int16_t x, int16_t y) {
+    if (DoScroll) {
+        if (++scroll_poll_count >= NUM_SCROLL_POLL) {
+            scroll_poll_count = 0;
+            // Scroll is very sensitive if you use the default values.
+            // We can't divide it by anything to reduce the sensitivity, cause that would zero out small input values.
+            // Instead we simply want either a 0, 1, or -1 depending on the input value's sign.
+            x = (x > 0 ? 1 : (x < 0 ? -1 : 0));
+            y = PloopyNumlockScrollVDir * (y > 0 ? 1 : (y < 0 ? -1 : 0));
+            mouse_report->v = x;
+            mouse_report->v = y;
+        }
+        return;
+    }
+
+    if (PloopyAcceleration) {
+        // Testing revealed the max reasonable x/y values were ~16.
+        // `x*x/16 + x` results in ~2x speed at the max value, while maintaining 1x speed at the minimum.
+        // But the x*x cancels the sign, so we need to negate it if the input value is negative.
+        x = (x > 0 ? x*x/16+x : -x*x/16+x);
+        y = (y > 0 ? y*y/16+y : -y*y/16+y);
+    }
+
     mouse_report->x = x;
     mouse_report->y = y;
 }
 
 __attribute__((weak)) void process_mouse(report_mouse_t* mouse_report) {
     report_pmw_t data = pmw_read_burst();
+
+    // Note: using scroll_lock here didn't work when I tested it.
+    // But using num_lock does work, so we use that instead.
+    DoScroll = PloopyNumlockScroll && host_keyboard_led_state().num_lock;
+
     if (data.isOnSurface && data.isMotion) {
         // Reset timer if stopped moving
         if (!data.isMotion) {

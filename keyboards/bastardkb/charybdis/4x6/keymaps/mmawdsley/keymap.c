@@ -20,10 +20,12 @@ enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_LOWER,
     LAYER_RAISE,
+    LAYER_DEBUG,
 };
 
 #define LOWER MO(LAYER_LOWER)
 #define RAISE MO(LAYER_RAISE)
+#define DEBUG MO(LAYER_DEBUG)
 #define CTL_ESC MT(MOD_LCTL,KC_ESC)
 #define MOUSE1 KC_MS_BTN1
 #define MOUSE2 KC_MS_BTN2
@@ -57,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS, MOUSE2,  MOUSE3,  MOUSE1,  DRGSCRL,    KC_RABK,   KC_MINS, KC_TRNS, KC_TRNS, KC_BSLS, KC_TRNS,
   // ╰──────────────────────────────┤ ├───────────────────────────────╯
                                   KC_TRNS, KC_TRNS, KC_TRNS,    KC_RALT, KC_TRNS,
-                                           KC_TRNS, KC_TRNS,    KC_TRNS
+                                           DEBUG,   KC_TRNS,    KC_TRNS
   //                           ╰───────────────╯ ╰───────────╯
   ),
 
@@ -70,6 +72,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_TRNS,    KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_TRNS,
   // ├──────────────────────────────┤ ├───────────────────────────────┤
        KC_TRNS, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,    KC_HOME, KC_PGUP, KC_PGDN, KC_END,   KC_TRNS, KC_TRNS,
+  // ╰──────────────────────────────┤ ├───────────────────────────────╯
+                                  KC_TRNS, DEBUG,   KC_TRNS,    KC_TRNS, KC_TRNS,
+                                           KC_TRNS, KC_TRNS,    KC_TRNS
+  //                           ╰───────────────╯ ╰───────────╯
+  ),
+
+  [LAYER_DEBUG] = LAYOUT(
+  // ╭──────────────────────────────╮ ╭───────────────────────────────╮
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+  // ├──────────────────────────────┤ ├───────────────────────────────┤
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+  // ├──────────────────────────────┤ ├───────────────────────────────┤
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS,  KC_TRNS, KC_TRNS,
+  // ├──────────────────────────────┤ ├───────────────────────────────┤
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
   // ╰──────────────────────────────┤ ├───────────────────────────────╯
                                   KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS,
                                            KC_TRNS, KC_TRNS,    KC_TRNS

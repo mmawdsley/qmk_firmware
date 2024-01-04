@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from layout_map import ACTIONS
+
+BASE_LAYOUT_MAP = [
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_4']],
+    [ACTIONS['BIG_GAP'], ACTIONS['OFFSET_4']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY']],
+    [ACTIONS['END']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_4']],
+    [ACTIONS['BIG_GAP'], ACTIONS['OFFSET_4']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY']],
+    [ACTIONS['END']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_4']],
+    [ACTIONS['BIG_GAP'], ACTIONS['OFFSET_4']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY']],
+    [ACTIONS['END']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_4']],
+    [ACTIONS['BIG_GAP'], ACTIONS['OFFSET_4']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_3']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_2']],
+    [ACTIONS['KEY'], ACTIONS['OFFSET_1']],
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY']],
+    [ACTIONS['END'], ACTIONS['BOTTOM_OFFSET']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['KEY']],
+    [ACTIONS['BOTTOM_GAP']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['END'], ACTIONS['BOTTOM_OFFSET'], ACTIONS['KEY']],
+
+    [ACTIONS['KEY']],
+    [ACTIONS['BOTTOM_GAP']],
+
+    [ACTIONS['END']],
+]
+
+LAYOUT_MAP = []
+
+for actions in BASE_LAYOUT_MAP:
+    LAYOUT_MAP.append(sum(actions))

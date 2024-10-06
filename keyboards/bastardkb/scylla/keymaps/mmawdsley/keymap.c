@@ -46,9 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────────────────────────┤ ├───────────────────────────────┤
           KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,   KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
     // ├──────────────────────────────┤ ├───────────────────────────────┤
-                                    KC_LALT, LOWER,  KC_LGUI,      KC_RGUI, RAISE, KC_RALT,
+                                    KC_LCTL, LOWER,  KC_LGUI,      KC_RGUI, RAISE, KC_RCTL,
     // ├──────────────────────────────┤ ├───────────────────────────────┤
-                                             KC_LCTL,KC_ENT,       KC_SPC,  KC_RCTL
+                                            KC_LALT, KC_ENT,       KC_SPC,  KC_RALT
     // ╰──────────────────────────────┤ ├───────────────────────────────╯
     ),
     [LAYER_GAME] = LAYOUT_split_4x6_5(
@@ -61,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├─────────────────────────────┤ ├───────────────────────────────┤
           KC_LSFT, KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
     // ├─────────────────────────────┤ ├───────────────────────────────┤
-                                   KC_LALT, LOWER, KC_LGUI,       KC_RGUI, RAISE, KC_RALT,
+                                   KC_LCTL, LOWER, KC_LGUI,       KC_RGUI, RAISE, KC_RCTL,
     // ├─────────────────────────────┤ ├───────────────────────────────┤
-                                           KC_LCTL,  KC_ENT,      KC_SPC,  KC_RCTL
+                                           KC_LALT,  KC_ENT,      KC_SPC,  KC_RALT
     // ╰─────────────────────────────┤ ├───────────────────────────────╯
     ),
     [LAYER_LOWER] = LAYOUT_split_4x6_5(
@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├────────────────────────────────┤ ├───────────────────────────────┤
           KC_TRNS, KC_TRNS, MOUSE2,  MOUSE3,  MOUSE1,  KC_TRNS,        KC_RABK, KC_MINS, KC_TRNS, KC_TRNS, KC_BSLS, KC_TRNS,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
-                                     KC_LALT, KC_TRNS, KC_LGUI,        KC_RGUI, RAISE, KC_RALT,
+                                     KC_LCTL, KC_TRNS, KC_LGUI,        KC_RGUI, RAISE, KC_RCTL,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
-                                              KC_LCTL, KC_ENT,         KC_SPC,  KC_RCTL
+                                              KC_LALT, KC_ENT,         KC_SPC,  KC_RALT
     // ╰────────────────────────────────┤ ├───────────────────────────────╯
     ),
     [LAYER_RAISE] = LAYOUT_split_4x6_5(
@@ -91,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├────────────────────────────────┤ ├────────────────────────────────┤
           KC_TRNS, KC_F9,   KC_F10,   KC_F11,  KC_F12, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_ENT,  KC_TRNS, KC_TRNS,
     // ├────────────────────────────────┤ ├────────────────────────────────┤
-                                      KC_LALT, DEBUG,  KC_LGUI,        KC_RGUI, KC_TRNS, KC_RALT,
+                                      KC_LCTL, DEBUG,  KC_LGUI,        KC_RGUI, KC_TRNS, KC_RCTL,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
-                                               KC_LCTL,   KC_ENT,      KC_SPC,  KC_RCTL
+                                               KC_LALT,   KC_ENT,      KC_SPC,  KC_RALT
     // ╰────────────────────────────────┤ ├────────────────────────────────╯
     ),
     [LAYER_DEBUG] = LAYOUT_split_4x6_5(
@@ -106,9 +106,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├─────────────────────────────┤ ├───────────────────────────────┤
           KC_LSFT, KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
     // ├─────────────────────────────┤ ├───────────────────────────────┤
-                                   KC_LALT, LOWER, KC_LGUI,       KC_RGUI, RAISE, KC_RALT,
+                                   KC_LCTL, LOWER, KC_LGUI,       KC_RGUI, RAISE, KC_RCTL,
     // ├─────────────────────────────┤ ├───────────────────────────────┤
-                                            KC_LCTL,  KC_ENT,     KC_SPC, KC_RCTL
+                                            KC_LALT,  KC_ENT,     KC_SPC, KC_RALT
     // ╰─────────────────────────────┤ ├───────────────────────────────╯
     ),
 };

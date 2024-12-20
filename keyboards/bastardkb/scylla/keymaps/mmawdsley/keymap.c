@@ -29,9 +29,6 @@ enum charybdis_keymap_layers {
 #define RAISE MO(LAYER_RAISE)
 #define DEBUG MO(LAYER_DEBUG)
 #define CTL_ESC MT(MOD_LCTL,KC_ESC)
-#define MOUSE1 KC_MS_BTN1
-#define MOUSE2 KC_MS_BTN2
-#define MOUSE3 KC_MS_BTN3
 #define DF_BASE DF(LAYER_BASE)
 #define DF_GAME DF(LAYER_GAME)
 
@@ -74,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├────────────────────────────────┤ ├───────────────────────────────┤
           KC_TRNS, KC_TRNS, KC_TRNS, KC_LBRC, KC_RBRC, KC_TRNS,        KC_PLUS, KC_LPRN, KC_RPRN, KC_EQL,  KC_TRNS, KC_TRNS,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
-          KC_TRNS, KC_TRNS, MOUSE2,  MOUSE3,  MOUSE1,  KC_TRNS,        KC_RABK, KC_MINS, KC_TRNS, KC_TRNS, KC_BSLS, KC_TRNS,
+          KC_TRNS, KC_TRNS, KC_BTN2, KC_BTN3, KC_BTN1, KC_TRNS,        KC_RABK, KC_MINS, KC_TRNS, KC_TRNS, KC_BSLS, KC_TRNS,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
                                      KC_LALT, KC_TRNS, KC_LGUI,        KC_RGUI, DEBUG, KC_RALT,
     // ├────────────────────────────────┤ ├───────────────────────────────┤
